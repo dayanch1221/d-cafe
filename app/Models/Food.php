@@ -7,6 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Food extends Model
 {
-    /** @use HasFactory<\Database\Factories\FoodFactory> */
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'category_id',
+        'name',
+        'description',
+        'price',
+        'discount_percent',
+    ];
+
+    /**
+     * Get the category that owns the food.
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

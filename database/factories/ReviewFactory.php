@@ -17,7 +17,10 @@ class ReviewFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'restaurant_id' => \App\Models\Restaurant::factory(),
+            'name' => fake()->name(),
+            'rating' => fake()->randomFloat(1, 1, 5),
+            'comment' => fake()->paragraph(),
         ];
     }
 }

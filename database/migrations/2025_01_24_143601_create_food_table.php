@@ -12,13 +12,11 @@ return new class extends Migration {
     {
         Schema::create('food', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->foreignId('category_id')->index()->constrained()->cascadeOnDelete();
+            $table->string('name');
             $table->text('description');
-            $table->string('image')->nullable();
-            $table->string('price');
-            $table->decimal('discount_percent', 5, 2)->default(0);
-            $table->string('slug');
+            $table->double('price')->default(0);
+            $table->double('discount_percent')->default(0);
         });
     }
 

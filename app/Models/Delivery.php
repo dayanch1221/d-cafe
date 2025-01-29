@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Location extends Model
+class Delivery extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,17 @@ class Location extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'country',
+        'order_id',
+        'delivery_location',
+        'delivery_status',
+        'delivery_time',
     ];
+
+    /**
+     * Get the order that owns the delivery.
+     */
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

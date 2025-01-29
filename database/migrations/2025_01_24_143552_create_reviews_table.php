@@ -12,8 +12,8 @@ return new class extends Migration {
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->foreignId('restaurant_id')->constrained()->cascadeOnDelete();
+            $table->string('name');
             $table->string('rating');
             $table->text('comment');
             $table->timestamps();

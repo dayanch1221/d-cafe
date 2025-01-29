@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Restaurant;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,11 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-        ];
+                'user_id' => User::factory(),
+                'restaurant_id' => Restaurant::factory(),
+                'order_status' => $this->faker->randomElement(['pending', 'processing', 'completed', 'cancelled']),
+                'total_amount' => $this->faker->randomFloat(2, 10, 100), // Random float with 2 decimal places
+                'payment_method' => $this->faker->randomElement(['cash', 'card', 'online']),
+            ];
     }
 }
